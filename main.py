@@ -4,6 +4,7 @@ import time
 import pygame
 
 STACK_ROTATION = False
+ROTATION_SPEED = 0.01
 
 class Circle:
     def __init__(self, r, omega, x = 0, y = 0, child = None, angle = 0):
@@ -24,7 +25,7 @@ class Circle:
 
         if x is not None: # used for root circle
             self.x, self.y = x, y
-        self.angle -= self.omega * 2
+        self.angle -= self.omega * ROTATION_SPEED
         self.child_x = self.x + self.r * math.cos(self.angle + angle_offset)
         self.child_y = self.y + self.r * math.sin(self.angle + angle_offset)
 
@@ -52,9 +53,9 @@ if __name__ == '__main__':
     pygame.init()
     screen = pygame.display.set_mode((800, 800))
     clock = pygame.time.Clock()
-    c = Circle(50, 0.025)
-    c = Circle(100, 0.015, child=c)
-    c = Circle(200, 0.01, x = 400, y = 400, child=c)
+    c = Circle(100, 0)
+    c = Circle(100, 5, child=c, angle=math.pi)
+    c = Circle(100, -5, x = 400, y = 400, child=c)
 
     time.sleep(5)
 
