@@ -2,7 +2,8 @@
 
 Spirograph figures in Python... just for fun! :-)
 
-https://github.com/user-attachments/assets/b7e96521-15b9-48dd-9c11-5f2f554e724d
+![pi](https://github.com/user-attachments/assets/c0206fdd-d276-4d6f-9ab2-757a71d66e60)
+
 
 This π symbol is drawn by 2302 rotating circles.
 
