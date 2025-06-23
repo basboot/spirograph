@@ -10,8 +10,8 @@ print(sys.getrecursionlimit())
 sys.setrecursionlimit(20000)
 
 STACK_ROTATION = False # not needed anymore, we have verified that all rotations are independend
-ROTATION_SPEED = 0.01
-SCALE = 0.5
+ROTATION_SPEED = math.pi / 1000
+SCALE = 3
 
 # circle class, both for updating and drawing the circles
 class Circle:
@@ -47,9 +47,9 @@ class Circle:
     def draw(self, screen):
         if self.child is not None:
             self.child.draw(screen)
-        pygame.draw.circle(screen, (0, 0, 0), (int(self.x), int(self.y)), self.r, width=1)
-        pygame.draw.circle(screen, (255, 0, 0) if self.child is None else (0, 0, 0), (int(self.child_x), int(self.child_y)), 5)
-        pygame.draw.line(screen, (0, 0, 0), (int(self.x), int(self.y)), (int(self.child_x), int(self.child_y)), width=1)
+        pygame.draw.circle(screen, (200, 200, 200), (int(self.x), int(self.y)), self.r, width=1)
+        pygame.draw.circle(screen, (255, 0, 0) if self.child is None else (200, 200, 200), (int(self.child_x), int(self.child_y)), 2)
+        pygame.draw.line(screen, (200, 200, 200), (int(self.x), int(self.y)), (int(self.child_x), int(self.child_y)), width=1)
 
     def get_path(self):
         if self.child is None:
@@ -59,7 +59,7 @@ class Circle:
         
 
 # intepolate path, to avoid gaps
-def interpolate_path(path, max_distance=2.0):
+def interpolate_path(path, max_distance=0.5):
     assert len(path) > 1, "cannot interpolate a single point"
     
     interpolated_path = [path[0]]  # Start with the first point
@@ -198,14 +198,14 @@ def generate_path(shape='circle', show_path=False, json_file=None):
     return path
 
 if __name__ == '__main__':
-    path = np.array(generate_path('json', show_path=False, json_file='pi_path_points.json'))
+    path = np.array(generate_path('json', show_path=False, json_file='einstein2_tsp_path_points.json'))
 
     # path = np.array(generate_path('star', show_path=False))
 
     # fft the path
     fft_result = np.fft.fft(path)
 
-    # time.sleep(5)
+    time.sleep(5)
 
     epsilon = 1
 
@@ -253,10 +253,12 @@ if __name__ == '__main__':
         c.update()
 
         path = c.get_path()
+
+        c.draw(screen)
+        
         if len(path) > 1:
             pygame.draw.lines(screen, (128, 0, 0), False, [(int(x), int(y)) for x, y in path], 2)
 
-        c.draw(screen)
 
         pygame.display.flip()
         clock.tick(60)
