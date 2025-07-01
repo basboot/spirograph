@@ -7,8 +7,8 @@ from scipy.sparse import csr_matrix
 import networkx as nx
 
 
-INPUT_FILE = "einstein2.png"  
-OUTPUT_FILE = "einstein2_tsp_path_points.json"
+INPUT_FILE = "einstein.png"  
+OUTPUT_FILE = "einstein_tsp_path_points.json"
 RESIZE_WIDTH = 256    # Resize image to this width (height will be proportional)
 THRESHOLD = 200       # Pixel threshold
 MAX_POINTS = 10000    # Maximum number of points to use for TSP
