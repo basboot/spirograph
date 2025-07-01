@@ -6,8 +6,7 @@ import pygame
 
 import sys
 # TODO: find out why this is needed, because there is no recursion (although there are a lot of circle calls on the stack)
-print(sys.getrecursionlimit())
-sys.setrecursionlimit(20000)
+sys.setrecursionlimit(30000)
 
 STACK_ROTATION = False # not needed anymore, we have verified that all rotations are independend
 ROTATION_SPEED = math.pi / 1000
@@ -116,7 +115,7 @@ def generate_path(shape='circle', show_path=False, json_file=None):
             for i in range(steps):
                 angle = 2 * math.pi * i / steps
                 x = radius * math.cos(angle)
-                y = radius * math.sin(1 * angle) * 1
+                y = radius * math.sin(2 * angle) * 1
                 path.append(x + y * 1j)
         case 'square':
             side_length = 400
@@ -200,14 +199,14 @@ def generate_path(shape='circle', show_path=False, json_file=None):
 if __name__ == '__main__':
     path = np.array(generate_path('json', show_path=False, json_file='einstein2_tsp_path_points.json'))
 
-    # path = np.array(generate_path('star', show_path=False))
+    # path = np.array(generate_path('circle', show_path=False))
 
     # fft the path
     fft_result = np.fft.fft(path)
 
-    time.sleep(5)
+    # time.sleep(5)
 
-    epsilon = 1
+    epsilon = 1000
 
     # ignore near zero magnitudes 
     magnitudes = np.abs(fft_result)
