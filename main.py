@@ -9,7 +9,7 @@ import sys
 sys.setrecursionlimit(30000)
 
 STACK_ROTATION = False # not needed anymore, we have verified that all rotations are independend
-ROTATION_SPEED = math.pi / 1000
+ROTATION_SPEED = math.pi / 500
 SCALE = 1.2
 
 # circle class, both for updating and drawing the circles
@@ -206,7 +206,7 @@ if __name__ == '__main__':
 
     time.sleep(5)
 
-    epsilon = 1000
+    epsilon = 100
 
     # ignore near zero magnitudes 
     magnitudes = np.abs(fft_result)
