@@ -10,7 +10,7 @@ sys.setrecursionlimit(30000)
 
 STACK_ROTATION = False # not needed anymore, we have verified that all rotations are independend
 ROTATION_SPEED = math.pi / 1000
-SCALE = 3
+SCALE = 1.2
 
 # circle class, both for updating and drawing the circles
 class Circle:
@@ -197,14 +197,14 @@ def generate_path(shape='circle', show_path=False, json_file=None):
     return path
 
 if __name__ == '__main__':
-    path = np.array(generate_path('json', show_path=False, json_file='einstein2_tsp_path_points.json'))
+    path = np.array(generate_path('json', show_path=False, json_file='einstein_tsp_path_points.json'))
 
     # path = np.array(generate_path('circle', show_path=False))
 
     # fft the path
     fft_result = np.fft.fft(path)
 
-    # time.sleep(5)
+    time.sleep(5)
 
     epsilon = 1000
 
