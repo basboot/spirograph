@@ -7,11 +7,9 @@ Spirograph figures in Python... just for fun! :-)
 
 This π symbol is drawn by 2302 rotating circles.
 
-But we can reduce frequency (at the the cost of losing some accuracy).
+![einsteingif](https://github.com/user-attachments/assets/ca8c5b11-cb62-439b-b260-065ae1403944)
 
-![einstein](https://github.com/user-attachments/assets/7ad5f205-6b65-43b9-9a79-9025dc12fcea)
-
-This person you might recognize was drawn with just 780 rotating circles.
+This person you might recognize was drawn with just 3509 rotating circles.
 
 ## How it Works
 
