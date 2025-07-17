@@ -7,6 +7,10 @@ Spirograph figures in Python... just for fun! :-)
 
 This π symbol is drawn by 2302 rotating circles.
 
+![einsteingif](https://github.com/user-attachments/assets/ca8c5b11-cb62-439b-b260-065ae1403944)
+
+This person you might recognize was drawn with just 3509 rotating circles.
+
 ## How it Works
 
 The project uses Fast Fourier Transform (FFT) to decompose 2D paths into their frequency components, where each
